@@ -1,0 +1,13 @@
+<%- include('bin/header.ejs') %>
+
+	<div class="container">
+		<% animes.forEach(function(e, i){ %>
+			<a class="card-img-pesquisa" href="/<%= e.url %>/1"><img src="<%= e.imagem %>" alt="<%= e.nome %>">
+			</a>
+			<div class="card-title">
+				<a href="/<%= e.url %>/1"><%= e.nome %></a>
+			</div>
+		<% }); %>
+	</div>
+
+<%- include('bin/footer.ejs') %>

@@ -1,0 +1,24 @@
+{
+  "name": "aurora",
+  "version": "1.0.0",
+  "description": "Um crawler de animes, meu próprio sistema para assistir.",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crawler": "^1.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Animes",
+    "Crawler",
+    "NODE.js",
+    "express"
+  ],
+  "author": "Adaías Magdiel",
+  "license": "ISC"
+}
