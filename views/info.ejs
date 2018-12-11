@@ -1,23 +1,29 @@
 <%- include('bin/header.ejs') %>
 
 	<div class="container">
-		<img class="info-img" src="<%= info.imagem %>" alt="<%= info.nome %>">
-		<div class="info info-title">
-			<h1><%= info.nome %></h1>
+		<div class="info info-img">
+			<img src="<%= info.imagem %>" alt="<%= info.nome %>">
 		</div>
+
+		<div class="info info-title">
+			<h3><%= info.nome %></h3>
+		</div>
+
 		<div class="info info-genero">
 			<p><%= info.genero %></p>
 		</div>
+
 		<div class="info info-info">
 			<p><strong>Ano:</strong> <%= info.ano %></p>
 			<p><strong>Episódios:</strong> <%= info.episodiosQNTD %></p>
 		</div>
+
 		<div class="info info-sinopse">
 			<h4>Sinopse:</h4>
 			<p><%= info.sinopse %></p>
 		</div>
 
-		<div style="margin-bottom: 15px;" class="info info-title">
+		<div class="info info-titlee" style="margin-bottom: 15px">
 			<h1>Episódios</h1>
 		</div>
 		
@@ -28,12 +34,12 @@
 		<% }); %>
 	</div>
 	
-	<div id="paginas">
-		<% paginas.forEach(function(e, i){ %>
-			<div class="paginas">
+	<div class="paginacao">
+		<div id="paginas">
+			<% paginas.forEach(function(e, i){ %>
 				<a href="/<%= URL_EJS %>/<%= i+1 %>"><%= i+1 %></a>
-			</div>
-		<% }); %>
+			<% }); %>
+		</div>
 	</div>
 
 <%- include('bin/footer.ejs') %>

@@ -8,6 +8,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(express.static("public"));
 
 
 /*    CONSTANTES DE CONFIGURAÇÃO    */
@@ -49,7 +50,14 @@ app.get("/", function(req, res) {
 /*    ASSISTIR EPISÓDIO    */
 app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
 	const URL = req.params.tipo+"/"+req.params.nome+"/"+req.params.episodio;
-	var videoURL = "";
+    var episodio = req.params.episodio.split("-");
+    var videoURL = "";
+
+    const titulo = "Episódio "+episodio[1];
+    const proximoEP = req.params.tipo+"/"+req.params.nome+"/"+episodio[0]+"-"+(parseInt(episodio[1])+1);
+    const anteriorEP = req.params.tipo+"/"+req.params.nome+"/"+episodio[0]+"-"+(parseInt(episodio[1])-1);
+    const voltar = req.params.tipo+"/"+req.params.nome+"/1";
+
     var c = new Crawler({
         maxConnections: 10,
         callback: function(error, response, done) {
@@ -61,7 +69,7 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
                 videoURL = $("#urlVideo").attr("src");
             }
             done();
-            res.render("assistir", {videoURL});
+            res.render("assistir", {videoURL, proximoEP, anteriorEP, voltar, titulo});
         }
     });
 

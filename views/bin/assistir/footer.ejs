@@ -1,10 +1,61 @@
-	<footer>
-		<div>
-			<p class="copyright">Aurora - Adaías Magdiel</p>
-			<p class="copyright">&copy; Todos os direitos reservados</p>
-			<p class="copyright">2018 - &infin;</p>
-		</div>
-	</footer>
+		<footer>
+			<div>
+				<p class="copyright">Aurora - Adaías Magdiel</p>
+				<p class="copyright">&copy; Todos os direitos reservados</p>
+				<p class="copyright">2018 - &infin;</p>
+			</div>
+		</footer>
+
+		<script>
+			const titulo = document.getElementById("titulo");
+			const avisos = document.getElementById("avisos");
+			const controles = document.getElementById("controles");
+			const voltar = document.getElementById("voltar");
+
+			const reproducao = document.getElementById("reproducao");
+			const reproducaoC = document.getElementById("reproducao-caixa");
+			const reproducaoT = document.getElementById("reproducao-txt");
+
+			const video = document.getElementById("video");
+			const videoS = document.getElementById("videoS");
+
+			var verifica = videoS.src.split('/');
+				verifica = verifica[2];
+			
+			if(verifica != "www.superanimes.site"){
+				avisos.style.display = 'block';
+				voltar.style.display = 'flex';
+
+				titulo.style.display = 'none';
+				video.style.display = 'none';
+				controles.style.display = 'none';
+				reproducao.style.display = 'none';
+			}
+			else{
+				video.style.display = 'block';
+				voltar.style.display = 'flex';
+				titulo.style.display = 'flex';
+				controles.style.display = 'flex';
+
+				avisos.style.display = 'none';
+
+				reproducaoC.addEventListener( 'change', function() {
+				    if(this.checked) {
+				    	reproducaoT.innerHTML = "Reprodução Automática: ON";
+				    } else {
+				        reproducaoT.innerHTML = "Reprodução Automática: OFF";
+				    }
+				});
+
+				video.addEventListener("ended", function(){
+					if(reproducaoC.checked){
+						window.location.replace(document.getElementById("invisivel").innerHTML);
+					}
+				})
+				
+			}
+
+		</script>
 
 	</body>
 </html>
