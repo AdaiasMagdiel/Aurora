@@ -1,0 +1,57 @@
+<%- include("../bin/header") %>
+
+	<div class="container">
+		<% animes.forEach(function(e, i){ %>
+			<a class="card-img-pesquisa" href="/<%= e.url %>/1">
+				<img src="<%= e.imagem %>" alt="<%= e.nome %>">
+			</a>
+			<div class="card-title">
+				<a href="/<%= e.url %>/1"><%= e.nome %></a>
+			</div>
+		<% }) %>
+	</div>
+
+	<div class="paginacao">
+		<div id="paginas">
+			<% page = parseInt(page); %>
+			<% if(page == 1){ %>
+				<a href="/todos/1" class="ativado">1</a>
+				<a href="/todos/2">2</a>
+				<a href="/todos/3">3</a>
+				<a href="/todos/4">4</a>
+				<a href="/todos/5">5</a>
+			<% }else if(page == 2){ %>
+				<a href="/todos/1">1</a>
+				<a href="/todos/2" class="ativado">2</a>
+				<a href="/todos/3">3</a>
+				<a href="/todos/4">4</a>
+				<a href="/todos/5">5</a>
+			<% }else if(page == 3){ %>
+				<a href="/todos/1">1</a>
+				<a href="/todos/2">2</a>
+				<a href="/todos/3" class="ativado">3</a>
+				<a href="/todos/4">4</a>
+				<a href="/todos/5">5</a>
+			<% }else if((page > 3) && (page < +paginas-1)){ %>
+				<a href="/todos/<%=page-2%>"><%=page-2%></a>
+				<a href="/todos/<%=page-1%>"><%=page-1%></a>
+				<a href="/todos/<%=page%>" class="ativado"><%=page%></a>
+				<a href="/todos/<%=page+1%>"><%=page+1%></a>
+				<a href="/todos/<%=page+2%>"><%=page+2%></a>
+			<% }else if(page == paginas-1){ %>
+				<a href="/todos/<%=page-3%>"><%=page-3%></a>
+				<a href="/todos/<%=page-2%>"><%=page-2%></a>
+				<a href="/todos/<%=page-1%>"><%=page-1%></a>
+				<a href="/todos/<%=page%>" class="ativado"><%=page%></a>
+				<a href="/todos/<%=page+1%>"><%=page+1%></a>
+			<% }else if(page == paginas){ %>
+				<a href="/todos/<%=page-4%>"><%=page-4%></a>
+				<a href="/todos/<%=page-3%>"><%=page-3%></a>
+				<a href="/todos/<%=page-2%>"><%=page-2%></a>
+				<a href="/todos/<%=page-1%>"><%=page-1%></a>
+				<a href="/todos/<%=page%>" class="ativado"><%=page%></a>
+			<%}%>
+		</div>
+	</div>
+
+<%- include("../bin/footer") %>

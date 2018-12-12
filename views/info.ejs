@@ -22,16 +22,29 @@
 			<h4>Sinopse:</h4>
 			<p><%= info.sinopse %></p>
 		</div>
-
-		<div class="info info-titlee" style="margin-bottom: 15px">
-			<h1>Episódios</h1>
-		</div>
 		
-		<% episodios.forEach(function(e, i){ %>
-			<div class="episodios">
-				<a href="/assistir/<%= e.url %>"><%= e.nome %></a>
+		<% if(episodios.length > 0){ %>
+			<div class="info info-titlee" style="margin-bottom: 15px">
+				<h1>Episódios</h1>
 			</div>
-		<% }); %>
+			<% episodios.forEach(function(e, i){ %>
+				<div class="episodios">
+					<a href="/assistir/<%= e.url %>"><%= e.nome %></a>
+				</div>
+			<% }); %>
+		<% } %>
+		
+		<% if(filmes.length > 0){ %>
+			<div class="info info-titlee" style="margin-bottom: 15px">
+				<h1>Filmes</h1>
+			</div>
+			<% filmes.forEach(function(e, i){ %>
+				<div class="episodios">
+					<a href="/assistir/<%= e.url %>"><%= e.nome %></a>
+				</div>
+			<% }); %>
+		<% } %>
+
 	</div>
 	
 	<div class="paginacao">

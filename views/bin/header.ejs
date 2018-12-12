@@ -16,10 +16,28 @@
 	<title>Aurora</title>
 </head>
 <body>
+
 	<header>
-		<a href="/" class="brand">Aurora</a>
+		<div class="div-brand">
+			<a href="/" class="brand">Aurora</a>
+		</div>
+		<div class="div-Amenu" id="div-Amenu">
+			<button><i class="material-icons md-36">menu</i></button>
+		</div>
+		<div class="div-Fmenu" id="div-Fmenu">
+			<button><i class="material-icons md-36">close</i></button>
+		</div>
+	</header>
+
+	<div class="menu" id="menu">
 		<form action="/pesquisa" method="post">
 			<input type="text" name="nomeAnime" placeholder="Pesquise um anime">
 			<button type="submit"><i class="material-icons">search</i></button>
 		</form>
-	</header>
+		<div class="opcoes flex column">
+			<a href="/todos/1">Lista de Conteúdo</a>
+			<a href="/animes/1">Animes</a>
+			<a href="/cartoons/1">Cartoons</a>
+			<a href="/live-actions/1">Live Action</a>
+		</div>
+	</div>

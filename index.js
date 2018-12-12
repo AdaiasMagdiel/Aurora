@@ -16,7 +16,9 @@ const PORT = process.env.PORT || 3000;
 const SITE = "https://www.superanimes.site/";
 
 
-/*    INÍCIO    */
+
+/****************************** PÁGINA INICIAL ************************************/
+
 app.get("/", function(req, res) {
 	var animes = [];
     var c = new Crawler({
@@ -46,8 +48,8 @@ app.get("/", function(req, res) {
     c.queue(SITE+"ultimos-adicionados");
 });
 
+/****************************** ASSISTIR EPISÓDIO *********************************/
 
-/*    ASSISTIR EPISÓDIO    */
 app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
 	const URL = req.params.tipo+"/"+req.params.nome+"/"+req.params.episodio;
     var episodio = req.params.episodio.split("-");
@@ -76,8 +78,8 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
     c.queue(SITE+URL);
 });
 
+/****************************** PESQUISAR ANIME ***********************************/
 
-/*    PESQUISAR ANIME    */
 app.post("/pesquisa", function(req, res) {
 	var animePesquisado = req.body.nomeAnime;
 		animePesquisado = animePesquisado.split(" ").join("+");
@@ -108,14 +110,16 @@ app.post("/pesquisa", function(req, res) {
     c.queue(SITE+"busca?parametro="+animePesquisado);
 });
 
+/****************************** INFO DO ANIME *************************************/
 
-/*    INFO DO ANIME    */
 app.get("/:tipo/:nome/:pagina", function(req, res) {
     const URL = req.params.tipo+"/"+req.params.nome+"?pagina="+req.params.pagina;
 	const URL_EJS = req.params.tipo+"/"+req.params.nome;
 	const episodios = [];
     const paginas = [];
 	var info = "";
+
+    const filmes = [];
 
     var c = new Crawler({
         maxConnections: 10,
@@ -131,13 +135,19 @@ app.get("/:tipo/:nome/:pagina", function(req, res) {
                 const ano = $(".boxAnimeSobreLinha span[itemprop='copyrightYear']").text().trim();
                 const episodiosQNTD = $(".boxAnimeSobreLinha span[itemprop='numberofEpisodes']").text().trim();
                 const genero = $(".boxAnimeSobreLinha span[itemprop='genre']").text().trim().split(" , ").join(", ");
-                const sinopse = $("#sinopse2").text().trim() || $("#sinopse").text().trim();
-                
+                const sinopse = $("#sinopse2").text().trim().split(" ( Ocultar )").join("") || $("#sinopse").text().trim();
+
                 $(".epsBox").each(function(e, i){
                 	const nome = $(this).find(".epsBoxSobre h3").text().trim();
                 	const url = $(this).find(".epsBoxSobre a").attr('href').split("/").slice(3).join('/');
 
                     episodios.push({nome, url});
+                });
+
+                $(".epsBoxFilme").each(function(i, e){
+                    const nomeFilme = $(this).find(".linha:first-child h3").text().trim();
+                    const urlFilme = $(this).find(".linha:last-child a").attr('href').split("/").slice(3).join('/');
+                    filmes.push({nome: nomeFilme, url: urlFilme})
                 });
 
                 if($(".selectBoxPaginacao").length){
@@ -150,12 +160,159 @@ app.get("/:tipo/:nome/:pagina", function(req, res) {
                 info = {imagem, nome, ano, sinopse, episodiosQNTD, genero};
             }
             done();
-            res.render("info", {info, episodios, paginas, URL_EJS});
+            res.render("info", {info, episodios, filmes, paginas, URL_EJS});
         }
     });
 
     c.queue(SITE+URL);
 });
+
+/****************************** TODOS *********************************************/
+
+app.get("/todos/:page", function(req, res) {
+    const page = req.params.page;
+    var animes = [];
+    var paginas = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+
+                $(".pageSelect option").each(function(e, i){
+                    paginas++;
+                });
+            }
+            done();
+            res.render("pages/todos", {animes, paginas, page});
+        }
+    });
+
+    c.queue(SITE+"lista?pagina="+page);
+});
+
+/****************************** ANIMES (ALL) **************************************/
+
+app.get("/animes/:page", function(req, res) {
+    const page = req.params.page;
+    var animes = [];
+    var paginas = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+
+                $(".pageSelect option").each(function(e, i){
+                    paginas++;
+                });
+            }
+            done();
+            res.render("pages/animes", {animes, paginas, page});
+        }
+    });
+
+    c.queue(SITE+"anime?pagina="+page);
+});
+
+/****************************** CARTOONS (ALL) ************************************/
+
+app.get("/cartoons/:page", function(req, res) {
+    const page = req.params.page;
+    var animes = [];
+    var paginas = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+
+                $(".pageSelect option").each(function(e, i){
+                    paginas++;
+                });
+            }
+            done();
+            res.render("pages/cartoons", {animes, paginas, page});
+        }
+    });
+
+    c.queue(SITE+"cartoon?pagina="+page);
+});
+
+/****************************** LIVE-ACTIONS (ALL) ********************************/
+
+app.get("/live-actions/:page", function(req, res) {
+    const page = req.params.page;
+    var animes = [];
+    var paginas = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+
+                $(".pageSelect option").each(function(e, i){
+                    paginas++;
+                });
+            }
+            done();
+            res.render("pages/live-actions", {animes, paginas, page});
+        }
+    });
+
+    c.queue(SITE+"live-action?pagina="+page);
+});
+
+/***************************************************************************/
+
 
 
 /*    SERVIDOR    */

@@ -1,0 +1,33 @@
+<%- include("../bin/header") %>
+
+	<div class="container">
+		<% animes.forEach(function(e, i){ %>
+			<a class="card-img-pesquisa" href="/<%= e.url %>/1">
+				<img src="<%= e.imagem %>" alt="<%= e.nome %>">
+			</a>
+			<div class="card-title">
+				<a href="/<%= e.url %>/1"><%= e.nome %></a>
+			</div>
+		<% }) %>
+	</div>
+
+	<div class="paginacao">
+		<div id="paginas">
+			<% page = parseInt(page); %>
+			<% if(page == 1){ %>
+				<a href="/live-actions/1" class="ativado">1</a>
+				<a href="/live-actions/2">2</a>
+				<a href="/live-actions/3">3</a>
+			<% }else if(page == 2){ %>
+				<a href="/live-actions/<%=page-1%>"><%=page-1%></a>
+				<a href="/live-actions/<%=page%>" class="ativado"><%=page%></a>
+				<a href="/live-actions/<%=page+1%>"><%=page+1%></a>
+			<% }else if(page == 3){ %>
+				<a href="/live-actions/<%=page-2%>"><%=page-2%></a>
+				<a href="/live-actions/<%=page-1%>"><%=page-1%></a>
+				<a href="/live-actions/<%=page%>" class="ativado"><%=page%></a>
+			<%}%>
+		</div>
+	</div>
+
+<%- include("../bin/footer") %>

@@ -5,5 +5,23 @@
 				<p class="copyright">2018 - &infin;</p>
 			</div>
 		</footer>
+
+		<script>
+			const abrirMENU = document.getElementById("div-Amenu");
+			const fecharMENU = document.getElementById("div-Fmenu");
+			const menu = document.getElementById("menu");
+
+			abrirMENU.onclick = function(){
+				abrirMENU.style.display = "none";
+				fecharMENU.style.display = "block";
+				menu.style.display = "block";
+			}
+			fecharMENU.onclick = function(){
+				abrirMENU.style.display = "block";
+				fecharMENU.style.display = "none";
+				menu.style.display = "none";
+			}
+		</script>
+
 	</body>
 </html>

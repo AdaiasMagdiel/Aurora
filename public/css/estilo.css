@@ -8,48 +8,109 @@ body {
     background-color: #0e1013;
 }
 
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.ativado{ background-color: #2b2b2b !important; border: 2px solid #B20909; }
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex.column{
+    flex-direction: column;
+}
+
+
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #B20909;
     padding: 20px;
     position: fixed;
     top: 0;
     width: 100%;
     height: 65px;
-
 }
-
+header .div-brand{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .div-Amenu, header .div-Fmenu{
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header .div-Fmenu{
+    display: none;
+}
+.div-Amenu button, .div-Fmenu button{
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
 .brand {
     text-decoration: none;
+    text-align: center;
     color: #ffffff;
     font-size: 1.7em;
-    width: 20%;
+    display: block;
+    width: 50px;
 }
 
+.menu{
+    display: none;
+    width: 70%;
+    height: 100vh;
+    background-color: #2b2b2b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 10px;
+    border-right: 2px solid #0e1013;
+}
 form {
     display: flex;
-    width: 65%;
 }
-
 form input {
     border: none;
     text-align: center;
     color: #0e1013;
     background-color: #fff;
-    border-radius: 15px 0 0 15px;
     width: 80%;
+    height: 45px;
 }
-
 form button {
     border: none;
     text-align: center;
     color: #fff;
-    background-color: #0e1013;
-    border-radius: 0 15px 15px 0;
+    background-color: #B20909;
     padding: 5px;
     width: 20%;
+    height: 45px;
+}
+.opcoes{
+    margin-top: 5px;
+}
+.opcoes a{
+    margin-top: 10px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #B20909;
+    width: 100%;
+    padding: 15px 0px;
 }
 
 .container {
@@ -87,6 +148,9 @@ form button {
 .container .card-img-pesquisa img {
     width: 80%;
     height: auto;
+    border-left: 2px solid #B20909;
+    border-right: 2px solid #B20909;
+    border-top: 2px solid #B20909;
 }
 
 .container .card-img-pesquisa:first-child {
@@ -104,6 +168,7 @@ form button {
     align-items: center;
     padding: 30px 15px 30px 15px;
     border-top: 2px solid #B20909;
+    border-bottom: 2px solid #B20909;
 }
 
 .container .card-title a {
