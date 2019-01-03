@@ -1,14 +1,25 @@
 <%- include('bin/header.ejs') %>
 
-	<div class="container">
-		<% animes.forEach(function(e, i){ %>
-			<a class="card-img" href="/assistir/<%= e.tipo %>/<%= e.anime %>/<%= e.episodio %>">
-				<img src="<%= e.imagem %>" alt="<%= e.nome %>">
-			</a>
-			<div class="card-title">
-				<a href="/assistir/<%= e.tipo %>/<%= e.anime %>/<%= e.episodio %>"><%= e.nome %></a>
-			</div>
-		<% }); %>
+	<div class="meu-container">
+		<div class="row">
+
+			<% animes.forEach(function(e, i){ %>
+				<% const nome = e.nome.replace("Assistir ", "") %>
+				<div class="col s12 m6 l4">
+					<div class="card">
+						<div class="card-image">
+							<a class="truncate" href="/assistir/<%= e.tipo %>/<%= e.anime %>/<%= e.episodio %>">
+								<img class="responsive-img" src="<%= e.imagem %>" alt="<%= nome %>">
+							</a>
+						</div>
+						<div class="card-action">
+							<a class="truncate" href="/assistir/<%= e.tipo %>/<%= e.anime %>/<%= e.episodio %>"><%= nome %></a>
+						</div>
+					</div>
+				</div>
+			<% }); %>
+
+		</div>
 	</div>
 
 <%- include('bin/footer.ejs') %>

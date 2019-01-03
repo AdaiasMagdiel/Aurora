@@ -1,10 +1,22 @@
-<%- include('bin/assistir/header.ejs') %>
+<%- include('bin/header.ejs') %>
 
-	<div class="container">
-		<video id="video" autobuffer autoplay controls poster="/img/cover.png">
-			<source id="videoS" src="<%= videoURL %>">
-		</video>
+	<div class="row">
+		<div class="col s12" style="display: flex; align-items: center; justify-content: center;">
+			<video class="responsive-video" controls poster="/img/cover.png">
+				<source src="<%= videoURL %>" type="video/mp4" id="video">
+			</video>
+		</div>
 
+		<div class="col s12">
+			<h4 class="center-align white-text" style="margin-top: 10px;"><%= titulo %></h4>
+			<div class="divi info-anoEepisodios" style="margin-top: 10px;">
+				<a class="btn black" href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
+				<a class="btn black" href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="container">
 		<div id="reproducao">
   			<label for="reproducao-caixa" id="reproducao-txt">Reprodução Automática: ON</label>
 			<input type="checkbox" id="reproducao-caixa" name="reproducao-caixa" checked>
@@ -14,21 +26,20 @@
 			<h1><%= titulo %></h1>
 		</div>
 		
-		<div id="avisos">
-			<h1 id="aviso">Erro 404</h1>
-			<h2 id="aviso">Aparentemente o <%= titulo %> não existe ou não se encontra nos nossos servidores.</h2>
-		</div>
-		
 		<div id="controles">
 			<a href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
-			<span></span>
 			<a href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
 		</div>
 
 		<div id="voltar">
 			<a href="/<%= voltar %>">Voltar ao Anime</a>
 		</div>
+
+		<div id="avisos">
+			<h1 id="aviso">Erro 404</h1>
+			<h2 id="aviso">Aparentemente o <%= titulo %> não existe ou não se encontra nos nossos servidores.</h2>
+		</div>
 	</div>
 
-<p style="display: none; color: #fff;" id="invisivel">/assistir/<%= proximoEP %></p>
-<%- include('bin/assistir/footer.ejs') %>
+<p id="invisivel">/assistir/<%= proximoEP %></p> -->
+<%- include('bin/footer.ejs') %>

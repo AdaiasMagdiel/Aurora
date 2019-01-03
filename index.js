@@ -69,6 +69,7 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
             else{
                 const $ = response.$;
                 videoURL = $("#urlVideo").attr("src");
+                console.log(videoURL);
             }
             done();
             res.render("assistir", {videoURL, proximoEP, anteriorEP, voltar, titulo});
@@ -192,7 +193,7 @@ app.get("/todos/:page", function(req, res) {
                 });
 
                 $(".pageSelect option").each(function(e, i){
-                    paginas++;
+                    paginas.push(i+1);
                 });
             }
             done();
@@ -228,7 +229,7 @@ app.get("/animes/:page", function(req, res) {
                 });
 
                 $(".pageSelect option").each(function(e, i){
-                    paginas++;
+                    paginas.push(i+1);
                 });
             }
             done();
@@ -264,7 +265,7 @@ app.get("/cartoons/:page", function(req, res) {
                 });
 
                 $(".pageSelect option").each(function(e, i){
-                    paginas++;
+                    paginas.push(i+1);
                 });
             }
             done();
@@ -300,7 +301,7 @@ app.get("/live-actions/:page", function(req, res) {
                 });
 
                 $(".pageSelect option").each(function(e, i){
-                    paginas++;
+                    paginas.push(i+1);
                 });
             }
             done();
@@ -309,6 +310,72 @@ app.get("/live-actions/:page", function(req, res) {
     });
 
     c.queue(SITE+"live-action?pagina="+page);
+});
+
+/****************************** LANÇAMENTOS ************************************/
+
+app.get("/lancamentos/:page", function(req, res) {
+    const page = req.params.page;
+    var animes = [];
+    var paginas = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+
+                $(".pageSelect option").each(function(e, i){
+                    paginas.push(i+1);
+                });
+            }
+            done();
+            res.render("pages/lancamentos", {animes, paginas, page});
+        }
+    });
+
+    c.queue(SITE+"lancamento?pagina="+page);
+});
+
+/****************************** RECOMENDAÇÕES ************************************/
+
+app.get("/recomendacao", function(req, res) {
+    var animes = [];
+
+    var c = new Crawler({
+        maxConnections: 10,
+        callback: function(error, response, done) {
+            if(error){
+                console.log(error);
+            }
+            else{
+                const $ = response.$;
+
+                $(".boxLista2").each(function(e, i){
+                    const nome = $(this).find(".boxLista2Img a").attr("title");
+                    const imagem = $(this).find(".boxLista2Img img").attr("src");
+                    const url = $(this).find(".boxLista2Img a").attr("href").split("/").slice(3).join("/");
+
+                    animes.push({nome, imagem, url});
+                });
+            }
+            done();
+            res.render("pages/recomendacao", {animes});
+        }
+    });
+
+    c.queue(SITE+"indicacao");
 });
 
 /***************************************************************************/

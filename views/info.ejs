@@ -1,58 +1,62 @@
 <%- include('bin/header.ejs') %>
 
 	<div class="container">
-		<div class="info info-img">
-			<img src="<%= info.imagem %>" alt="<%= info.nome %>">
-		</div>
-
-		<div class="info info-title">
-			<h3><%= info.nome %></h3>
-		</div>
-
-		<div class="info info-genero">
-			<p><%= info.genero %></p>
-		</div>
-
-		<div class="info info-info">
-			<p><strong>Ano:</strong> <%= info.ano %></p>
-			<p><strong>Episódios:</strong> <%= info.episodiosQNTD %></p>
-		</div>
-
-		<div class="info info-sinopse">
-			<h4>Sinopse:</h4>
-			<p><%= info.sinopse %></p>
-		</div>
+	 <div class="row">
 		
-		<% if(episodios.length > 0){ %>
-			<div class="info info-titlee" style="margin-bottom: 15px">
-				<h1>Episódios</h1>
+		<div class="col s12 m4">
+			<div class="img-here">
+				<img class="responsive-img" src="<%= info.imagem %>" alt="<%= info.nome %>">
 			</div>
-			<% episodios.forEach(function(e, i){ %>
-				<div class="episodios">
-					<a href="/assistir/<%= e.url %>"><%= e.nome %></a>
-				</div>
-			<% }); %>
-		<% } %>
-		
-		<% if(filmes.length > 0){ %>
-			<div class="info info-titlee" style="margin-bottom: 15px">
-				<h1>Filmes</h1>
-			</div>
-			<% filmes.forEach(function(e, i){ %>
-				<div class="episodios">
-					<a href="/assistir/<%= e.url %>"><%= e.nome %></a>
-				</div>
-			<% }); %>
-		<% } %>
-
-	</div>
-	
-	<div class="paginacao">
-		<div id="paginas">
-			<% paginas.forEach(function(e, i){ %>
-				<a href="/<%= URL_EJS %>/<%= i+1 %>"><%= i+1 %></a>
-			<% }); %>
 		</div>
+
+		<div class="col s12 m8">
+			<div class="card card-info">
+				<div class="card-content">
+					<h4 class="center-align"><%= info.nome %></h4>
+					<p class="center-align"><%= info.genero %></p>
+					<span class="info-anoEepisodios">
+						<p><strong>Ano:</strong> <%= info.ano %></p>
+						<p><strong>Episódios:</strong> <%= info.episodiosQNTD %></p>
+					</span>
+					<p class="justify-align"><%= info.sinopse %></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col s12">
+			<% if(episodios.length > 0){ %>
+				<div class="collection">
+					<div class="collection-header">
+						<h4 class="with-text center-align">Episódios</h4>
+					</div>
+
+					<% episodios.forEach(function(e, i){ %>
+						<a class="with-text collection-item center-align" href="/assistir/<%= e.url %>"><%= e.nome %></a>
+					<% }); %>
+				</div>
+			<% } %>
+
+			<% if(filmes.length > 0){ %>
+				<div class="collection">
+					<div class="collection-header">
+						<h4 class="with-text center-align">Filmes</h4>
+					</div>
+
+					<% filmes.forEach(function(e, i){ %>
+						<a class="with-text collection-item center-align" href="/assistir/<%= e.url %>"><%= e.nome %></a>
+					<% }); %>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="col s12">
+			<ul class="pagination center-align">
+				<% paginas.forEach(function(e, i){ %>
+			    	<li class="waves-effect active"><a href="/<%= URL_EJS %>/<%= i+1 %>"><%= i+1 %></a></li>
+				<% }); %>
+			</ul>
+		</div>
+	 </div>
 	</div>
 
 <%- include('bin/footer.ejs') %>

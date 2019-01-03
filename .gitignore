@@ -1,1 +1,4 @@
 node_modules/
+public/css/materialize.css
+public/js/jquery.min.js
+public/js/materialize.js

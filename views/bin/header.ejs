@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	
 	<meta name="author" content="Adaías Magdiel">
 	<meta name="description" content="Meu próprio site para assistir animes.">
 	<meta name="keywords" content="Anime, Desenho, Tokusatsu, Live-Action, Dorama, Adaías Magdiel, Adaías, Magdiel">
 
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="/css/estilo.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link rel="stylesheet" href="/css/materialize.css">
+	<link rel="stylesheet" href="/css/estilo.css">
 
 	<title>Aurora</title>
 </head>
 <body>
+	
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<div class="container">
+					<a href="/" class="brand-logo centered">Aurora</a>
+					<a href="#" data-target="menu" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+				        <li><a href="/">Início</a></li>
+						<li><a href="/todos/1">Lista de Conteúdo</a></li>
+						<li><a href="/animes/1">Animes</a></li>
+						<li><a href="/cartoons/1">Cartoons</a></li>
+						<li><a href="/live-actions/1">Live Action</a></li>
+						<li><a href="/lancamentos/1">Lançamentos</a></li>
+						<li><a href="/recomendacao">Recomendações</a></li>
+				    </ul>
+				</div>
+			</div>
+		</nav>
+	</div>
 
-	<header>
-		<div class="div-brand">
-			<a href="/" class="brand">Aurora</a>
-		</div>
-		<div class="div-Amenu" id="div-Amenu">
-			<button><i class="material-icons md-36">menu</i></button>
-		</div>
-		<div class="div-Fmenu" id="div-Fmenu">
-			<button><i class="material-icons md-36">close</i></button>
-		</div>
-	</header>
-
-	<div class="menu" id="menu">
+	<ul class="sidenav" id="menu">
 		<form action="/pesquisa" method="post">
-			<input type="text" name="nomeAnime" placeholder="Pesquise um anime">
-			<button type="submit"><i class="material-icons">search</i></button>
+			<input type="search" class="pesquisaInput" name="nomeAnime" placeholder="Pesquise..." required>
 		</form>
-		<div class="opcoes flex column">
-			<a href="/todos/1">Lista de Conteúdo</a>
-			<a href="/animes/1">Animes</a>
-			<a href="/cartoons/1">Cartoons</a>
-			<a href="/live-actions/1">Live Action</a>
+		<li><a href="/">Início</a></li>
+		<li><a href="/todos/1">Lista de Conteúdo</a></li>
+		<li><a href="/animes/1">Animes</a></li>
+		<li><a href="/cartoons/1">Cartoons</a></li>
+		<li><a href="/live-actions/1">Live Action</a></li>
+		<li><a href="/lancamentos/1">Lançamentos</a></li>
+		<li><a href="/recomendacao">Recomendações</a></li>
+	</ul>
+
+	<div class="loading">
+		<div class="load">
+			<div class="load-bar"></div>
 		</div>
 	</div>
