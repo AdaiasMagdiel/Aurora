@@ -1,0 +1,8 @@
+{
+  "name": "Aurora",
+  "description": "Um app para assistir animes, servido com base dos meus estudo de back-end",
+  "repository": "https://https://github.com/AdaiasMagdiel/Aurora",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "heroku", "animes"],
+  "image": "heroku/nodejs"
+}
