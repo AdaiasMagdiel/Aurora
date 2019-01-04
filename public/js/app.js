@@ -15,10 +15,7 @@ $(document).ready(function(){
 		recarregar();
 	}
 	else{
-		localStorage.removeItem("sorteado");
-		const newURL = location.pathname.split("/").slice(2, -1).concat("1").join("/");
-		const urlPronta = location.origin+"/"+newURL;
-		$('#voltarAnime').attr('href', urlPronta);
+		localStorage.removeItem("sorteado");s
 	}
 });
 

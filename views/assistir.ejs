@@ -14,7 +14,8 @@
 				<a class="btn black" href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
 			</div>
 			<div class="divi info-anoEepisodios" style="margin-top: 10px;">
-				<a class="btn black" href="#"  id="voltarAnime">Voltar ao Anime</a>
+				<% const newURL = location.pathname.split("/").slice(2, -1).concat("1").join("/"); %>
+				<a class="btn black" href="/<% newURL %>"  id="voltarAnime">Voltar ao Anime</a>
 			</div>
 		</div>
 	</div>
