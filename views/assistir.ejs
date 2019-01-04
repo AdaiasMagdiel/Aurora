@@ -7,40 +7,15 @@
 			</video>
 		</div>
 
-		<div class="col s12">
-			<h4 class="center-align white-text" style="margin-top: 10px;"><%= titulo %></h4>
-			<div class="divi info-anoEepisodios" style="margin-top: 10px;">
+		<div class="col s12 caixa-assistir">
+			<h4 class="center-align white-text"><%= titulo %></h4>
+			<div class="info-anoEepisodios">
 				<a class="btn black" href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
 				<a class="btn black" href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
 			</div>
-			<div class="divi info-anoEepisodios" style="margin-top: 10px;">
+			<div class="info-anoEepisodios">
 				<a class="btn black" href="/<%= infoURL %>"  id="voltarAnime">Voltar ao Anime</a>
 			</div>
-		</div>
-	</div>
-
-	<!-- <div class="container">
-		<div id="reproducao">
-  			<label for="reproducao-caixa" id="reproducao-txt">Reprodução Automática: ON</label>
-			<input type="checkbox" id="reproducao-caixa" name="reproducao-caixa" checked>
-		</div>
-
-		<div id="titulo">
-			<h1><%= titulo %></h1>
-		</div>
-		
-		<div id="controles">
-			<a href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
-			<a href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
-		</div>
-
-		<div id="voltar">
-			<a href="/<%= voltar %>">Voltar ao Anime</a>
-		</div>
-
-		<div id="avisos">
-			<h1 id="aviso">Erro 404</h1>
-			<h2 id="aviso">Aparentemente o <%= titulo %> não existe ou não se encontra nos nossos servidores.</h2>
 		</div>
 	</div>
 
