@@ -69,7 +69,6 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
             else{
                 const $ = response.$;
                 videoURL = $("#urlVideo").attr("src");
-                console.log(videoURL);
             }
             done();
             res.render("assistir", {videoURL, proximoEP, anteriorEP, voltar, titulo});

@@ -17,6 +17,12 @@ $(document).ready(function(){
 	else{
 		localStorage.removeItem("sorteado");
 	}
+
+	$('#voltarAnime').click(function(e){
+		e.preventDefault();
+		const newURL = location.pathname.split("/").slice(2, -1).concat("1").join("/");
+		location.href = "/"+newURL;
+	});
 });
 
 function recarregar(){
