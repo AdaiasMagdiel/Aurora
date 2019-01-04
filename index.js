@@ -54,6 +54,7 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
 	const URL = req.params.tipo+"/"+req.params.nome+"/"+req.params.episodio;
     var episodio = req.params.episodio.split("-");
     var videoURL = "";
+    const infoURL = req.params.tipo+"/"+req.params.nome+"/1";
 
     const titulo = "Episódio "+episodio[1];
     const proximoEP = req.params.tipo+"/"+req.params.nome+"/"+episodio[0]+"-"+(parseInt(episodio[1])+1);
@@ -71,7 +72,7 @@ app.get("/assistir/:tipo/:nome/:episodio", function(req, res) {
                 videoURL = $("#urlVideo").attr("src");
             }
             done();
-            res.render("assistir", {videoURL, proximoEP, anteriorEP, voltar, titulo});
+            res.render("assistir", {videoURL, proximoEP, anteriorEP, voltar, titulo, infoURL});
         }
     });
 
