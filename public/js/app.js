@@ -15,7 +15,7 @@ $(document).ready(function(){
 		recarregar();
 	}
 	else{
-		localStorage.removeItem("sorteado");s
+		localStorage.removeItem("sorteado");
 	}
 });
 
