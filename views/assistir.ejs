@@ -1,23 +1,28 @@
 <%- include('bin/header.ejs') %>
 
 	<div class="row">
-		<div class="col s12" style="display: flex; align-items: center; justify-content: center;">
+		<div class="col s12 flex">
 			<video class="responsive-video" controls poster="/img/cover.png">
 				<source src="<%= videoURL %>" type="video/mp4" id="video">
 			</video>
 		</div>
 
-		<div class="col s12 caixa-assistir">
+		<div class="col s12 flex">
 			<h4 class="center-align white-text"><%= titulo %></h4>
-			<div class="info-anoEepisodios">
-				<a class="btn black" href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
-				<a class="btn black" href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
+		</div>
+
+		<div class="col s12 flex mt">
+			<div class="col s6 flex">
+				<a class="btn black center-align" href="/assistir/<%= anteriorEP %>" id="anterior">Anterior</a>
 			</div>
-			<div class="info-anoEepisodios">
-				<a class="btn black" href="/<%= infoURL %>"  id="voltarAnime">Voltar ao Anime</a>
+			<div class="col s6 flex">
+				<a class="btn black center-align" href="/assistir/<%= proximoEP %>"  id="proximo">Próximo</a>
 			</div>
+		</div>
+
+		<div class="col s12 flex mt">
+			<a class="btn black center-align voltar-btn" href="/<%= infoURL %>"  id="voltarAnime">Voltar ao Anime</a>
 		</div>
 	</div>
 
-<p id="invisivel">/assistir/<%= proximoEP %></p> -->
 <%- include('bin/footer.ejs') %>

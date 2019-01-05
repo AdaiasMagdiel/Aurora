@@ -10,6 +10,15 @@
 	--cor-vermelha: #B9090B;
 }
 
+.flex{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.mt{
+	margin-top: 20px !important;
+}
+
 .loading{
 	display: flex;
 	flex-direction: column;
@@ -44,11 +53,11 @@
 	0%{
 		width: 0%;
 	}
-	30%{
-		width: 30%;
+	25%{
+		width: 25%;
 	}
-	60%{
-		width: 60%;
+	50%{
+		width: 50%;
 	}
 	100%{
 		width: 100%;
@@ -170,6 +179,9 @@ footer .footer-copyright p{
 @media only screen and (max-width: 600px){
 	.row .col {
 		padding: 0 !important;
+	}
+	.voltar-btn{
+		width: 80% !important;
 	}
 }
 @media only screen and (min-width: 601px){
